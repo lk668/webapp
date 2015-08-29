@@ -1,0 +1,56 @@
+doctype html
+head
+  meta(cahsrset = "utf-8")
+  title #{title}
+  include ./includes/head
+body
+  include ./includes/header
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        a.navbar-brand(href = "#")
+          img(alt = "Brand", src = "/lib/image/brand.jpg",width = 30, height = 30)
+        button.navbar-toggle.collapsed
+          span.sr-only Toggle Navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      .collapse.navbar-collapse(id = "bs-example-navbar-collapse-1")
+        ul.nav.navbar-nav
+          li.home
+            a(href = "/") 首页
+          li.index
+            a(href = "/index/") 主页
+          li.themelist
+            a.dropdown-toggle(href = "#", data-toggle = "dropdown", role = "button", aria-haspopup = "true", aria-expanded = "false") 主题
+              span.caret
+            ul.dropdown-menu
+              li
+                a.theme(href = "/index/science") 科幻
+              li
+                a.theme(href = "/index/comedy",) 喜剧
+              li
+                a.theme(href = "/index/terror") 恐怖
+              li
+                a.theme(href = "/index/love") 爱情
+              li
+                a.theme(href = "/index/asume") 娱乐
+          li.list
+            a(href = "/admin/list") 列表
+          li.submit
+            a(href = "/admin/movie") 录入
+          li.about
+            a(href = "#", data-toggle = "modal", data-target = "#about") 关于
+  .modal.fade(id = "about")
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type = "button", data-dismiss = "modal", aria-label = "Close")
+            span(aria-hidden = "true") &times;
+          h4.modal-title 关于
+        .modal-body
+          p 本网站处于试用版，尚待完善......
+        .modal-footer
+          button.btn.btn-primary(data-dismiss = "modal") 了然
+body
+  block content

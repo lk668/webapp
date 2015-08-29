@@ -1,0 +1,30 @@
+extend ../layout
+
+block content
+	.container
+		.row
+			table.table.table-hover.table-bordered
+				thread
+					tr
+						th 电影名字
+						th 导演
+						th 国家
+						th 上映年份
+						th 录入时间
+						th 主题
+						th 观看
+						th 更新
+						th 删除
+					tbody
+						each item in movies
+							tr(class = "item-id-#{item._id}")
+								td #{item.title}
+								td #{item.doctor}
+								td #{item.country}
+								td #{item.year}
+								td #{moment(item.meta.upudateAt).format('MM/DD/YYYY')}
+								td #{item.theme}
+								td: a(target = "_blank", href = "../movie/#{item._id}") 观看
+								td: a(target = "_blank", href = "../admin/update/#{item._id}") 更新
+								td 
+									button.btn.btn-danger.del(type = "button", data-id = "#{item._id}") 删除
