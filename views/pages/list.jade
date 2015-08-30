@@ -24,7 +24,7 @@ block content
 								td #{item.year}
 								td #{moment(item.meta.upudateAt).format('MM/DD/YYYY')}
 								td #{item.theme}
-								td: a(target = "_blank", href = "../movie/#{item._id}") 观看
-								td: a(target = "_blank", href = "../admin/update/#{item._id}") 更新
+								td: a(target = "_blank", href = "/admin/movie/#{item._id}") 观看
+								td: a(target = "_blank", href = "/admin/update/#{item._id}") 更新
 								td 
-									button.btn.btn-danger.del(type = "button", data-id = "#{item._id}") 删除
+									a.btn.btn-danger.del(type = "button", data-id = "#{item._id}") 删除

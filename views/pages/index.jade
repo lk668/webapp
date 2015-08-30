@@ -7,7 +7,10 @@ block content
 				.col-md-2
 					.thumbnail
 						a(href = "/movie/#{item._id}")
-							img(src = "#{item.poster}", alt = "#{item.title}",height = "100")
+							if (item.poster)
+								img(src = "#{item.poster}", alt = "#{item.theme}",height = "100")
+							else
+								img(src = "/image/art2.jpg", alt = "#{item.theme}",height = "100")
 						.caption
 							h3(align = "center") #{item.title}
 							p(align = "center"): a.btn.btn-primary(href = "/movie/#{item._id}", role = "button")  Play

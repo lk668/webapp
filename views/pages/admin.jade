@@ -32,7 +32,12 @@ block content
 				.form-group
 					label.col-sm-2.control-label(for = "inputTheme") 电影主题
 					.col-sm-9
-						input#inputTheme.form-control(type = "text", name = "movie[theme]",placeholder = "只能输入  科幻、喜剧、恐怖、娱乐或者爱情")
+						select.form-control(name = "movie[theme]", value = "#{movie.theme}")
+							option 科幻
+							option 喜剧
+							option 恐怖
+							option 娱乐
+							option 爱情
 				.form-group
 					label.col-sm-2.control-label(for = "inputYear") 上映年份
 					.col-sm-9

@@ -39,7 +39,7 @@ app.get('/index/', function(req, res){
 		}
 		debugger
 		res.render('index', {
-			title: '电影网主页',
+			title: '电影主页',
 			movies: movies
 		})
 	})
@@ -54,7 +54,7 @@ app.get('/index/:theme', function(req, res){
 			console.log(err)
 		}
 		res.render('index', {
-			title: '电影网',
+			title: '电影分类',
 			movies: movies,
 			theme: theme
 		})
@@ -76,7 +76,7 @@ app.get('/movie/:id', function(req, res){
 //admin page
 app.get('/admin/movie', function(req, res){
 	res.render('admin', {
-		title: '电影网后台录入页',
+		title: '电影后台录入页',
 		movie:{
 			title:'',
 			doctor:'',
@@ -85,6 +85,7 @@ app.get('/admin/movie', function(req, res){
 			poster:'',
 			flash:'',
 			summary:'',
+			theme: '',
 			language:''
 		}
 	})
@@ -95,7 +96,7 @@ app.get('/admin/update/:id',function(req, res){
 	if (id){
 		Movie.findById(id,function(err, movie){
 			res.render('admin',{
-				title: '电影网后台录入页',
+				title: '电影后台录入页',
 				movie: movie
 			})
 		})
@@ -107,52 +108,41 @@ app.post('/admin/movie/new',function(req, res){
 	var id = req.body.movie._id 
 	var movieObj = req.body.movie
 	var _movie
-	var a = true
-	for (var i = 0;i < themeArray1.length; i++){
-		if (themeArray1[i] == movieObj.theme){
-			a = false
-		} 
-	}
-	if (a){
-		res.redirect('/admin/movie/')
-	}
-	else{
-		if (id !== 'undefined'){
-			Movie.findById(id, function(err, movie){
-				if (err) {
+	if (id !== 'undefined'){
+		Movie.findById(id, function(err, movie){
+			if (err) {
+				console.log(err)
+			}
+			_movie =_.extend(movie, movieObj)
+			_movie.save(function(err, movie){
+				if(err){
 					console.log(err)
 				}
-				_movie =_.extend(movie, movieObj)
-				_movie.save(function(err, movie){
-					if(err){
-						console.log(err)
-					}
-					res.redirect('/movie/'+ movie._id)
-				})
-
+				//res.redirect('/movie/'+ movie._id)
+				res.redirect('/admin/list/')
 			})
-		}
-		else {
-			_movie = new Movie({
-				doctor: movieObj.doctor,
-				title: movieObj.title,
-				country: movieObj.country,
-				language: movieObj.language,
-				year: movieObj.year,
-				poster: movieObj.poster,
-				theme: movieObj.theme,
-				summary: movieObj.summary,
-				flash: movieObj.flash
-			})
-			_movie.save(function(err, movie){
-					if(err){
-						console.log(err)
-					}
-					res.redirect('/movie/'+ movie._id)
-			})
-			
-		}
-}
+		})
+	}
+	else {
+		_movie = new Movie({
+			doctor: movieObj.doctor,
+			title: movieObj.title,
+			country: movieObj.country,
+			language: movieObj.language,
+			year: movieObj.year,
+			poster: movieObj.poster,
+			theme: movieObj.theme,
+			summary: movieObj.summary,
+			flash: movieObj.flash
+		})
+		_movie.save(function(err, movie){
+				if(err){
+					console.log(err)
+				}
+				//res.redirect('/movie/'+ movie._id)
+				res.redirect('/admin/list/')
+		})
+	}
 })
 
 //list page
