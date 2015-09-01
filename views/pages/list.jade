@@ -22,9 +22,10 @@ block content
 								td #{item.doctor}
 								td #{item.country}
 								td #{item.year}
-								td #{moment(item.meta.upudateAt).format('MM/DD/YYYY')}
+								td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+								//-td #{item.meta.updateAt}
 								td #{item.theme}
-								td: a(target = "_blank", href = "/admin/movie/#{item._id}") 观看
-								td: a(target = "_blank", href = "/admin/update/#{item._id}") 更新
-								td 
+								td: a(target = '_blank',href = "/movie/#{item._id}") 观看
+								td: a(href = "/admin/update/#{item._id}", data-id = "#{item._id}",id = "update") 更新
+								td
 									a.btn.btn-danger.del(type = "button", data-id = "#{item._id}") 删除

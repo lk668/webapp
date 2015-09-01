@@ -6,8 +6,8 @@ var _ = require('underscore')
 var Movie = require('./models/movie')
 var port = process.env.PORT || 3000 // PORT=5000 node app.js
 var app = express()  // start a web server
-var themeArray = {science:'科幻',comedy:'喜剧',terror:'恐怖',love:'爱情',asume:'娱乐'}
-var themeArray1 = ['科幻','喜剧','恐怖','爱情','娱乐']
+var themeArray = {science:'科幻',comedy:'喜剧',terror:'恐怖',love:'爱情',asume:'娱乐',
+				  action:'动作', drama:'剧情',war:'战争', anime:'动画', other:'其他'}
 
 mongoose.connect('mongodb://localhost/imooc')
 
@@ -32,12 +32,11 @@ app.get('/', function(req, res){
 })
 
 // index page
-app.get('/index/', function(req, res){
+app.get('/index', function(req, res){
 	Movie.fetch(function(err, movies){
 		if (err) {
 			console.log(err);
 		}
-		debugger
 		res.render('index', {
 			title: '电影主页',
 			movies: movies
@@ -46,10 +45,18 @@ app.get('/index/', function(req, res){
 	
 })
 
+// signup user
+app.post('/user/signup', function (req, res) {
+	user = req.body.user
+	pwd_confirm = req.body.pwd_confirm
+	console.log(user)
+	console.log(pwd_confirm)
+})
+
 // index list page
-app.get('/index/:theme', function(req, res){
+app.get('/index/:theme', function (req, res){
 	var theme = themeArray[req.params.theme]
-	Movie.find({theme:theme}, function(err, movies){
+	Movie.find({theme:theme}, function (err, movies){
 		if(err){
 			console.log(err)
 		}
@@ -62,19 +69,22 @@ app.get('/index/:theme', function(req, res){
 })
 
 //detail page
-app.get('/movie/:id', function(req, res){
+app.get('/movie/:id', function (req, res){
 	var id = req.params.id
-	Movie.findById(id, function(err, movie){
-		res.render('detail', {
+	Movie.findById(id, function (err, movie){
+		if (movie){
+			res.render('detail', {
 			title: '电影: ' + movie.title,
 			movie: movie
 		})
+		}
+		
 	})
 	
 })
 
 //admin page
-app.get('/admin/movie', function(req, res){
+app.get('/admin/movie', function (req, res){
 	res.render('admin', {
 		title: '电影后台录入页',
 		movie:{
@@ -86,15 +96,16 @@ app.get('/admin/movie', function(req, res){
 			flash:'',
 			summary:'',
 			theme: '',
+			attribute: '',
 			language:''
 		}
 	})
 })
 //admin update movie
-app.get('/admin/update/:id',function(req, res){
+app.get('/admin/update/:id',function (req, res){
 	var id = req.params.id
 	if (id){
-		Movie.findById(id,function(err, movie){
+		Movie.findById(id,function (err, movie){
 			res.render('admin',{
 				title: '电影后台录入页',
 				movie: movie
@@ -104,17 +115,17 @@ app.get('/admin/update/:id',function(req, res){
 })
 
 //admin post movie
-app.post('/admin/movie/new',function(req, res){
+app.post('/admin/movie/new',function (req, res){
 	var id = req.body.movie._id 
 	var movieObj = req.body.movie
 	var _movie
 	if (id !== 'undefined'){
-		Movie.findById(id, function(err, movie){
+		Movie.findById(id, function (err, movie){
 			if (err) {
 				console.log(err)
 			}
 			_movie =_.extend(movie, movieObj)
-			_movie.save(function(err, movie){
+			_movie.save(function (err, movie){
 				if(err){
 					console.log(err)
 				}
@@ -133,9 +144,10 @@ app.post('/admin/movie/new',function(req, res){
 			poster: movieObj.poster,
 			theme: movieObj.theme,
 			summary: movieObj.summary,
-			flash: movieObj.flash
+			flash: movieObj.flash,
+			attribute: movieObj.attribute
 		})
-		_movie.save(function(err, movie){
+		_movie.save(function (err, movie){
 				if(err){
 					console.log(err)
 				}
@@ -146,8 +158,8 @@ app.post('/admin/movie/new',function(req, res){
 })
 
 //list page
-app.get('/admin/list', function(req, res){
-	Movie.fetch(function(err, movies){
+app.get('/admin/list', function (req, res){
+	Movie.fetch(function (err, movies){
 		if (err) {
 			console.log(err);
 		}
@@ -160,10 +172,10 @@ app.get('/admin/list', function(req, res){
 
 
 //delete movie list
-app.delete('/admin/list',function(req, res){
+app.delete('/admin/list',function (req, res){
 	var id = req.query.id
 	if(id) {
-		Movie.remove({_id: id}, function(err, movie){
+		Movie.remove({_id: id}, function (err, movie){
 			if(err){
 				console.log(err)
 			}

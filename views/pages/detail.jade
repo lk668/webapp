@@ -4,10 +4,11 @@ block content
 	.container
 		.row
 			.col-md-7
-				video(allowFullScreen = "true", width = "720",height = "600", controls="controls")
-					source(src = "#{movie.flash}", type = "video/mp4")
-					object( data = "#{movie.flash}", width ="720", height ="600")
-						embed(src = "#{movie.flash}",allowFullScreen = "true", quality = "high", width = "720",height = "600", align = "middle", type = "application/x-shockwave-flash")
+				if(movie.attribute ==='false' )
+					video(allowFullScreen = "true", width = "720",height = "600", controls="controls")
+						source(src = "#{movie.flash}", type = "video/mp4")
+				else
+					embed(src = "#{movie.flash}",allowFullScreen = "true", quality = "high", width = "720",height = "600", align = "middle", type = "application/x-shockwave-flash")
 			.col-md-5
 				dl.dl-horizontal
 					dt 电影名字

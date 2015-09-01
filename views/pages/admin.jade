@@ -32,12 +32,23 @@ block content
 				.form-group
 					label.col-sm-2.control-label(for = "inputTheme") 电影主题
 					.col-sm-9
-						select.form-control(name = "movie[theme]", value = "#{movie.theme}")
+						select.form-control(name = "movie[theme]",id = "select_theme")
 							option 科幻
 							option 喜剧
 							option 恐怖
 							option 娱乐
 							option 爱情
+							option 动作
+							option 剧情
+							option 战争
+							option 动画
+							option 其他
+				.form-group
+					label.col-sm-2.control-label(for = "inputAttribute") 电影来源于外网？
+					.col-sm-9
+						select.form-control(name = "movie[attribute]")
+							option true
+							option false
 				.form-group
 					label.col-sm-2.control-label(for = "inputYear") 上映年份
 					.col-sm-9

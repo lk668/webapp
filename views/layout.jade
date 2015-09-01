@@ -8,7 +8,7 @@ body
     .navbar.navbar-inverse.navbar-fixed-top(role = "navigation")
         .container-fluid
         .navbar-header
-            a.navbar-brand(href = "#")
+            a.navbar-brand(href = "/")
                 img(alt = "Brand", src = "/image/brand.jpg",width = 30, height = 30)
             button.navbar-toggle.collapsed(type = "button", data-toggle="collapse", data-target = "#bs-example-navbar-collapse-1")
                 span.sr-only Toggle Navigation
@@ -34,12 +34,27 @@ body
                             a.theme(href = "/index/love") 爱情
                         li
                             a.theme(href = "/index/asume") 娱乐
+                        li
+                            a.theme(href = "/index/action") 动作
+                        li
+                            a.theme(href = "/index/drama") 剧情
+                        li
+                            a.theme(href = "/index/war") 战争
+                        li
+                            a.theme(href = "/index/anime") 动画
+                        li
+                            a.theme(href = "/index/other") 其他
                 li.list
                     a(href = "/admin/list") 列表
                 li.submit
                     a(href = "/admin/movie") 录入
                 li.about
                     a(href = "#", data-toggle = "modal", data-target = "#about") 关于
+            p.navbar-text.navbar-right
+                a.navbar-link(href = "#",data-toggle = "modal",data-target = "#signup") 注册
+                span &nbsp; |&nbsp
+                a.navbar-link(href = "#",data-toggle = "modal",data-target = "#signin") 登录
+                span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
     .modal.fade(id = "about")
         .modal-dialog
             .modal-content
@@ -63,4 +78,37 @@ body
                 .modal-footer
                     button.btn.btn-default(data-dismiss = "modal") 取消
                     button.btn.btn-primary(data-dismiss = "modal", id = "allow_delete") 确定
+    .modal.fade(id = "signup")
+        .modal-dialog
+            .modal-content
+                form(method = "POST", action = "/user/signup")
+                    .modal-header 注册
+                    .modal-body
+                        .form-group
+                            label(for = "signupName") 用户名
+                            input#signupName.form-control(name = "user[name]",type = "text")
+                        .form-group
+                            label(for = "signupPassword") 密码
+                            input#signupPassword.form-control(name = "user[password]",type = "text")
+                        .form-group
+                            label(for = "signupPasswordAgain") 确认密码
+                            input#signupPasswordAgain.form-control(name = "pwd_confirm[confirm]",type = "text")
+                    .modal-footer
+                        button.btn.btn-default(type = "button", data-dismiss = "modal") 关闭
+                        button.btn.btn-primary(type = "submit") 提交
+    .modal.fade(id = "signin")
+        .modal-dialog
+            .modal-content
+                form(method = "POST", action = "/user/signin")
+                    .modal-header 登录
+                    .modal-body
+                        .form-group
+                            label(for = "signinName") 用户名
+                            input#signinName.form-control(name = "user[name]",type = "text")
+                        .form-group
+                            label(for = "signinPassword") 密码
+                            input#signinPassword.form-control(password = "user[password]",type = "text")
+                    .modal-footer
+                        button.btn.btn-default(type = "button", data-dismiss = "modal") 关闭
+                        button.btn.btn-success(type = "submit") 登录
     block content
