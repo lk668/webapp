@@ -80,7 +80,7 @@ exports.signin = function (req, res) {
 				}
 				else{
 					//console.log("the password is error") // change later
-					res.send("the password is error")
+					res.send("The password is error")
 				}
 		})
 		}
