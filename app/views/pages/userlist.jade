@@ -1,0 +1,20 @@
+extend ../layout
+
+block content
+	.container
+		.row
+			table.table.table-hover.table-bordered
+				thread
+					tr
+						th 用户名
+						th 身份(>10具有admin权限)
+						th 创建时间
+						th 删除
+					tbody
+						each item in users
+							tr(class = "item-id-#{item._id}")
+								td #{item.name}
+								td #{item.role}
+								td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
+								td
+									a.btn.btn-danger.del.del_user(type = "button", data-id = "#{item._id}", data-type = "user") 删除

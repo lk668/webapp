@@ -22,6 +22,12 @@
 	* npm install bcrypt --save
 	* npm install body-parser
 	* npm install underscore
+
+	* npm install cookie-parser
+	* npm install express-session
+	* npm install connect-mongo
+
+	* npm install morgan  (log on console)
 <h4>
 	Usage:
 </h4>
