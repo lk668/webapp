@@ -7,6 +7,7 @@ block content
             .col-md-4
                 form(method = "POST", action = "/user/signup")
                     .modal-header
+                        span.glyphicon.glyphicon-user
                     .modal-body
                         .form-group
                             label(for = "signupName") 用户名
@@ -18,5 +19,4 @@ block content
                             label(for = "signupPasswordAgain") 确认密码
                             input#signupPasswordAgain.form-control(name = "pwd_confirm[confirm]",type = "password", required="required" )
                     .modal-footer
-                        button.btn.btn-default(type = "button", data-dismiss = "modal") 关闭
-                        button.btn.btn-primary(type = "submit") 提交
+                        button.btn.btn-primary.btn-block(type = "submit") 注册

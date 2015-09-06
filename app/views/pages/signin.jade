@@ -6,6 +6,8 @@ block content
 			.col-md-4
 			.col-md-4
 				form(method = "POST", action = "/user/signin")
+					.modal-header
+						span.glyphicon.glyphicon-user
 					.modal-body
 						.form-group
 							label(for = "signinName") 用户名
@@ -14,5 +16,8 @@ block content
 							label(for = "signinPassword") 密码
 							input#signinPassword.form-control(name = "user[password]",type = "password", required="required" )
 					.modal-footer
-						button.btn.btn-default(type = "button", data-dismiss = "modal") 关闭
+						span.pull-left
+							a(href = "/user/showsignup") 注册
+							span &nbsp | &nbsp
+							a(href = "#") 忘记密码?
 						button.btn.btn-success(type = "submit") 登录

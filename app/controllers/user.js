@@ -67,6 +67,7 @@ exports.signin = function (req, res) {
 		}
 		if(!user){
 			//console.log("The user is not exist") // change later
+			res.send("The user is not exist")
 		}
 		else{
 			user.comparePassword(password, function(err, isMatch){
@@ -90,14 +91,12 @@ exports.signin = function (req, res) {
 //showsignin
 exports.showsignin = function(req,res){
 	res.render('signin',{
-		title: '用户登录'
 	})
 }
 
 //showsignup
 exports.showsignup = function(req,res){
 	res.render('signup',{
-		title: '用户注册'
 	})
 }
 
