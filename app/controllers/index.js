@@ -26,7 +26,6 @@ exports.index = function(req, res){
 exports.page = function(req, res){
 	var page = req.params.id
 	var Num = 12
-	console.log(page)
 	Movie.fetch(function(err, movies){
 		if (err) {
 			console.log(err);
@@ -35,7 +34,7 @@ exports.page = function(req, res){
 			title: '电影主页',
 			movies: movies.slice(Num*(page-1),Num*(page-1)+12),
 			totalPage: Math.ceil(movies.length/12),
-			currentPage: page
+			currentPage: parseInt(page)
 		})
 	})
 	
