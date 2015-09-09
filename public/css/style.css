@@ -25,3 +25,13 @@ img.poster{
 body.home{
 	padding-top: 50px;
 }
+.footer{
+	position: fixed;
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	bottom: 0px;
+	text-align: center;
+	background-color: black;
+	color: #9d9d9d;
+}
