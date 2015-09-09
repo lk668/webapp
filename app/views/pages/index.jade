@@ -14,3 +14,37 @@ block content
 					.caption
 						h5(align = "center") #{item.title}
 						p(align = "center"): a.btn.btn-primary(href = "/movie/#{item._id}", role = "button")  Play
+		.pagenum
+			ul.pagination
+				-if(currentPage > 1){
+					li
+						a(href = "/index/result/#{currentPage-1}", aria-label = "Previous")
+							span(aria-hidden = "true") &laquo;
+				-}
+				-else {
+					li
+						a(href = "/index/result/#{currentPage}", aria-label = "Previous")
+							span(aria-hidden = "true") &laquo;
+				-}
+
+				-for(var i = 1; i <= totalPage; i++){
+					-if(currentPage === i){
+						li.active
+							a(href = "/index/result/#{i}") #{i}
+					-}
+					-else {
+						li
+							a(href = "/index/result/#{i}") #{i}
+					-}
+				-}
+
+				-if(currentPage < totalPage){
+					li
+						a(href = "/index/result/#{currentPage+1}", aria-label = "Next")
+							span(aria-hidden = "true") &raquo;
+				-}
+				-else {
+					li
+						a(href = "/index/result/#{currentPage}", aria-label = "Next")
+							span(aria-hidden = "true") &raquo;
+				-}
