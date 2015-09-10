@@ -109,13 +109,17 @@ exports.logout = function (req, res) {
 
 //user list
 exports.list = function (req, res) {
+	var index = parseInt( req.query.id || 1)
+	var Num = 10
 	User.fetch( function (err, users){
 		if(err){
 			console.log(err)
 		}
 		res.render('userlist',{
 			title: '用户列表',
-			users: users
+			users: users.slice( Num * (index -1), Num * index),
+			currentPage: index,
+			totalPage: Math.ceil( users.length/Num )
 		})
 	})
 }

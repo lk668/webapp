@@ -18,3 +18,37 @@ block content
 								td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
 								td
 									a.btn.btn-danger.del.del_user(type = "button", data-id = "#{item._id}", data-type = "user") 删除
+	.pagenum
+		ul.pagination
+			-if(currentPage > 1){
+				li
+					a(href = "/admin/user/list?id=#{currentPage-1}", aria-label = "Previous")
+						span(aria-hidden = "true") &laquo;
+			-}
+			-else {
+				li
+					a(href = "/admin/user/list?id=#{currentPage}", aria-label = "Previous")
+						span(aria-hidden = "true") &laquo;
+			-}
+
+			-for(var i = 1; i <= totalPage; i++){
+				-if(currentPage === i){
+					li.active
+						a(href = "/admin/user/list?id=#{i}") #{i}
+				-}
+				-else {
+					li
+						a(href = "/admin/user/list?id=#{i}") #{i}
+				-}
+			-}
+
+			-if(currentPage < totalPage){
+				li
+					a(href = "/admin/user/list?id=#{currentPage+1}", aria-label = "Next")
+						span(aria-hidden = "true") &raquo;
+			-}
+			-else {
+				li
+					a(href = "/admin/user/list?id=#{currentPage}", aria-label = "Next")
+						span(aria-hidden = "true") &raquo;
+			-}
