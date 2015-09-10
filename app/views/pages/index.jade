@@ -6,14 +6,14 @@ block content
 			each item in movies
 				.col-md-2.col-sm-3
 					.picture
-						a(href = "/movie/#{item._id}")
+						a(target = '_blank',href = "/movie/#{item._id}")
 							if (item.poster)
 								img.poster(src = "#{item.poster}", alt = "#{item.title}")
 							else
 								img.poster(src = "/image/art2.jpg", alt = "#{item.title}")
 					.caption
 						h5(align = "center") #{item.title}
-						p(align = "center"): a.btn.btn-primary(href = "/movie/#{item._id}", role = "button")  Play
+						p(align = "center"): a.btn.btn-primary(target = '_blank',href = "/movie/#{item._id}", role = "button")  Play
 	.pagenum
 		ul.pagination
 			-if(currentPage > 1){
