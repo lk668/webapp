@@ -6,14 +6,19 @@ var themeArray = {science:'科幻',comedy:'喜剧',terror:'恐怖',love:'爱情'
 // list theme
 exports.theme = function (req, res){
 	var theme = themeArray[req.params.theme]
+	var index =parseInt( req.query.id || 1 )
+	var Num = 12
 	Movie.find({theme:theme}, function (err, movies){
 		if(err){
 			console.log(err)
 		}
 		res.render('index', {
 			title: '电影分类',
-			movies: movies,
-			theme: theme
+			movies: movies.slice( Num * (index-1), Num * index),
+			theme: theme,
+			currentPage: index,
+			totalPage: Math.ceil(movies.length/Num),
+			themeselect: "/" + req.params.theme,
 		})
 	})
 }
@@ -109,13 +114,18 @@ exports.new = function (req, res){
 
 //list page
 exports.list = function (req, res){
+	var index = parseInt( req.query.id || 1 )
+	var Num = 10
 	Movie.fetch(function (err, movies){
 		if (err) {
 			console.log(err);
 		}
 		res.render('movielist', {
 			title: '电影列表',
-			movies: movies
+			movies: movies.slice( Num * (index-1), Num * index),
+			currentPage: index,
+			totalPage: Math.ceil(movies.length/Num)
+
 		})
 	})
 }

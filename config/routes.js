@@ -14,7 +14,6 @@ module.exports = function(app){
 	// index page
 	app.get('/', Index.home)
 	app.get('/index', User.signinRequired, Index.index)
-	app.get('/index/result/:id', User.signinRequired, Index.page)
 
 	// user page
 	app.post('/user/signup/name', User.signup_name)
