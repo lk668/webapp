@@ -1,10 +1,10 @@
 .carousel{
-	height: 500px;
+	height: 350px;
 	background-color: #000;
 	padding-bottom: 60px;
 }
 .carousel .item{
-	height: 500px;
+	height: 350px;
 	background-color: #000;
 }
 .carousel img{
@@ -15,8 +15,12 @@
 }
 
 img.poster{
-	width: 100%;
-	height: 215px;
+	width: 100px;
+	height: 125px;
+}
+
+.col-md-2 {
+	text-align:center;
 }
 
 img.home{
@@ -26,6 +30,7 @@ img.home{
 
 #home-container .col-md-4{
 	text-align: center;
+	bottom: 10px;
 }
 
 .vjs-default-skin .vjs-control-bar { 

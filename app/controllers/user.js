@@ -110,7 +110,7 @@ exports.logout = function (req, res) {
 //user list
 exports.list = function (req, res) {
 	var index = parseInt( req.query.id || 1)
-	var Num = 10
+	var Num = 7
 	User.fetch( function (err, users){
 		if(err){
 			console.log(err)

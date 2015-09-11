@@ -115,7 +115,7 @@ exports.new = function (req, res){
 //list page
 exports.list = function (req, res){
 	var index = parseInt( req.query.id || 1 )
-	var Num = 10
+	var Num = 7
 	Movie.fetch(function (err, movies){
 		if (err) {
 			console.log(err);
