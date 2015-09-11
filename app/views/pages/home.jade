@@ -92,6 +92,17 @@ body.home
         a.right.carousel-control(href = "#carousel-example-generic", role = "button", data-slide = "next")
             span.glyphicon.glyphicon-chevron-right(aria-hidden = "true")
             span.sr-only Next
+    .modal.fade(id = "about")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type = "button", data-dismiss = "modal", aria-label = "Close")
+                        span(aria-hidden = "true") &times;
+                    h4.modal-title 关于
+                .modal-body
+                    p 本网站处于试用版，尚待完善......
+                .modal-footer
+                    button.btn.btn-primary(data-dismiss = "modal") 知道了
     .container(id = "home-container")
         .row
             .col-md-4
