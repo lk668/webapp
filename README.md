@@ -31,5 +31,7 @@
 <h4>
 	Usage:
 </h4>
-
-	* node app.js
+	* git clone
+	* install mongo nodejs
+	* npm install bcrypt
+	* node app.js (start the web)
