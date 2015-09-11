@@ -62,4 +62,31 @@ $(function(){
 		var user = target.data('user')
 		console.log(user)
 	})
+
+	$(document).keydown(function(event){
+		var video = $('.video-js')[0]
+		switch(event.which){
+			case 39:
+				video.currentTime += 10 ; break;
+			case 37:
+				video.currentTime -= 10; break;
+			case 38:
+				video.volume += 0.1; break;
+			case 40:
+				video.volume -= 0.1; break;
+			case 32:
+				if(video.paused){
+					video.play(); break;
+				}
+				else {
+					video.pause(); break;
+				}
+		}
+	})
+
+	$('.video-js').dblclick(function(){
+		var video = $('.video-js')[0]
+		video.webkitEnterFullscreen();
+		video.mozRequestFullScreen()
+	})
 })
