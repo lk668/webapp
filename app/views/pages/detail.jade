@@ -9,6 +9,9 @@ block content
 						source(src = "#{movie.flash}", type = "video/mp4")
 				else
 					embed(src = "#{movie.flash}",allowFullScreen = "true", quality = "high", width = "720",height = "500", align = "middle", type = "application/x-shockwave-flash",flashvars="proxyid=1&namespace=FlashProxy")
+				hr.divider
+				h4 下载: &nbsp;&nbsp;&nbsp;
+					a.glyphicon.glyphicon-save(href=movie.flash,role='button')
 			.col-md-5
 				dl.dl-horizontal
 					dt 电影名字

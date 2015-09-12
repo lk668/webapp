@@ -17,7 +17,7 @@ block content
 								td #{item.role}
 								td #{moment(item.meta.updateAt).format('MM/DD/YYYY')}
 								td
-									a.btn.btn-danger.del.del_user(type = "button", data-id = "#{item._id}", data-type = "user") 删除
+									a.btn.btn-danger.del.glyphicon.glyphicon-trash(type = "button", data-id = "#{item._id}", data-type = "user")
 	.pagenum
 		ul.pagination
 			-if(currentPage > 1){

@@ -13,7 +13,8 @@ block content
 								img.poster(src = "/image/art2.jpg", alt = "#{item.title}")
 					.caption
 						h5(align = "center") #{item.title}
-						p(align = "center"): a.btn.btn-primary(target = '_blank',href = "/movie/#{item._id}", role = "button")  Play
+						p(align = "center")
+							a.btn.btn-primary(target = '_blank',href = "/movie/#{item._id}", role = "button") Play
 	.pagenum
 		ul.pagination
 			-if(currentPage > 1){

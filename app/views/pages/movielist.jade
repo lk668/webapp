@@ -28,7 +28,7 @@ block content
 								td: a(target = '_blank',href = "/movie/#{item._id}") 观看
 								td.update: a(href = "/admin/movie/update/#{item._id}", data-id = "#{item._id}") 更新
 								td
-									a.btn.btn-danger.del.del_movie(type = "button", data-id = "#{item._id}", data-type = "movie") 删除
+									button.btn.btn-danger.del.glyphicon.glyphicon-trash(type = "button", data-id = "#{item._id}", data-type = "movie")
 	.pagenum
 		ul.pagination
 			-if(currentPage > 1){
