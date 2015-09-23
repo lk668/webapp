@@ -33,17 +33,12 @@ block content
 					label.col-sm-2.control-label(for = "inputTheme") 电影主题
 					.col-sm-9
 						select.form-control(name = "movie[theme]")
-							option 科幻
-							option 最新
-							option 喜剧
-							option 恐怖
-							option 娱乐
-							option 爱情
-							option 动作
-							option 剧情
-							option 战争
-							option 动画
-							option 其他
+							-var themeArray = ['科幻','喜剧','恐怖','爱情','娱乐','动作', '剧情','战争', '动画', '其他','最新']
+								-for theme in themeArray
+									-if (theme === movie.theme)
+										option(selected) #{theme}
+									-else
+										option #{theme}
 				.form-group
 					label.col-sm-2.control-label(for = "inputAttribute") 电影来源于外网？
 					.col-sm-9
@@ -60,4 +55,4 @@ block content
 						textarea#inputSummary.form-control(type = "text", name = "movie[summary]",value = "#{movie.summary}")
 				.form-group
 					.col-sm-offset-2.col-sm-10
-					button.btn.btn-default(type = "submit") 录入
+						button.btn.btn-default(type = "submit") 录入

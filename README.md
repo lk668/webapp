@@ -11,27 +11,10 @@
 <p>Just show all follows to create a webapp from zero</p>
 <p>backstage: mongodb,express,mongoose,comment(time lib)</p>
 <p>front: jade,bootstrap,jquery,bower,bcrypt</p>
-	* mkdir webapp && cd webapp
 	* install mongodb
 	* inatall nodejs (install npm default, if not install npm, just run 'sudo apt-get install npm')
-	* npm install express
-	* npm install jade
-	* npm install mongoose
-	* npm install bower -g
-	* bower install bootstrap (install jquery default)
-	* npm install bcrypt --save
-	* npm install body-parser
-	* npm install underscore
-
-	* npm install cookie-parser
-	* npm install express-session
-	* npm install connect-mongo
-
-	* npm install morgan  (log on console)
 <h4>
 	Usage:
 </h4>
-	* git clone
-	* install mongo nodejs
-	* npm install bcrypt
+	* npm install
 	* node app.js (start the web)
