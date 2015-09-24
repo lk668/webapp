@@ -46,11 +46,6 @@ body.home
                         li
                             a.theme(href = "/index/other") 其他
             if user
-                p.navbar-text.navbar-right
-                    span 欢迎您,#{user.name}
-                    span &nbsp; |&nbsp
-                    a.navbar-link(href = "/user/logout") 登出
-                    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                 if (user.role >10)
                     ul.nav.navbar-nav
                         li.list
@@ -58,16 +53,22 @@ body.home
                         li.list
                             a(href = "/admin/user/list") 用户列表
                         li.submit
-                            a(href = "/admin/movie") 录入                    
+                            a(href = "/admin/movie") 录入 
+            ul.nav.navbar-nav
+                li.about
+                    a(href = "#", data-toggle = "modal", data-target = "#about") 关于
+            if user
+                p.navbar-text.navbar-right
+                    span 欢迎您,#{user.name}
+                    span &nbsp; |&nbsp
+                    a.navbar-link(href = "/user/logout") 登出
+                    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp                   
             else
                 p.navbar-text.navbar-right
                     a.navbar-link(href = "/user/showsignup") 注册
                     span &nbsp; |&nbsp
                     a.navbar-link(href = "/user/showsignin") 登录
                     span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-            ul.nav.navbar-nav
-                li.about
-                    a(href = "#", data-toggle = "modal", data-target = "#about") 关于
     .carousel.slide(data-ride = "carousel", id = "carousel-example-generic")
         ol.carousel-indicators
             li.active(data-target="#carousel-example-generic" data-slide-to="0")

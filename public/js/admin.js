@@ -5,20 +5,18 @@ $(function(){
 		var type = target.data('type');
 		$('#delete_' + type).modal();
 		$('.allow_delete').click(function(e){
-			var tr = $('item-id-'+ id)
+			var tr = $('.item-id-'+ id)
 			$.ajax({
 				type: 'DELETE',
 				url: '/admin/' + type + '/list?id=' + id,
 				success: function(result){
 					if(result.success ===1){
 						tr.remove();
-						window.location.reload();
 					}
 				}
 			})
 		})
 	})
-
 	$('#signupName').blur(function(e){
 		var data = {}
 		data = { name: $('#signupName').val()}

@@ -12,12 +12,15 @@ exports.theme = function (req, res){
 		if(err){
 			console.log(err)
 		}
+		var totalPage = Math.ceil(movies.length/Num)
+		if(index > totalPage)
+			totalPage = index
 		res.render('index', {
 			title: '电影分类',
 			movies: movies.slice( Num * (index-1), Num * index),
 			theme: theme,
 			currentPage: index,
-			totalPage: Math.ceil(movies.length/Num),
+			totalPage: totalPage,
 			themeselect: "/" + req.params.theme,
 		})
 	})
@@ -116,15 +119,19 @@ exports.new = function (req, res){
 exports.list = function (req, res){
 	var index = parseInt( req.query.id || 1 )
 	var Num = 7
+	console.log(index)
 	Movie.fetch(function (err, movies){
 		if (err) {
 			console.log(err);
 		}
+		var totalPage = Math.ceil(movies.length/Num)
+		if(index > totalPage)
+			totalPage = index
 		res.render('movielist', {
 			title: '电影列表',
 			movies: movies.slice( Num * (index-1), Num * index),
 			currentPage: index,
-			totalPage: Math.ceil(movies.length/Num)
+			totalPage: totalPage
 
 		})
 	})

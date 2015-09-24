@@ -115,11 +115,14 @@ exports.list = function (req, res) {
 		if(err){
 			console.log(err)
 		}
+		var totalPage = Math.ceil( users.length/Num )
+		if(totalPage < index)
+			totalPage = index
 		res.render('userlist',{
 			title: '用户列表',
 			users: users.slice( Num * (index -1), Num * index),
 			currentPage: index,
-			totalPage: Math.ceil( users.length/Num )
+			totalPage: totalPage
 		})
 	})
 }
