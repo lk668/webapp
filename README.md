@@ -2,7 +2,7 @@
 	A website to update your local movie to your database
 </h3>
 <p>
-********************
+***********************
 </p>
 
 <h4>
