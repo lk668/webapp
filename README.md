@@ -10,5 +10,6 @@
 
 1. install mongodb
 2. inatall nodejs (install npm default, if not install npm, just run 'sudo apt-get install npm')
-3. npm install
+3. npm install(If an error occurred about bcrypt, please delete the bcrypt folder in node_modules folder. And run npm install
+   again)
 4. node app.js (start the web)
